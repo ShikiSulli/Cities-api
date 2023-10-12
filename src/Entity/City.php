@@ -1,13 +1,22 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CityRepository::class)]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class City
 {
+  
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
